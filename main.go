@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+
+	"github.com/fatih/color"
+)
 
 func main() {
 	var transactions []float64
@@ -11,7 +15,8 @@ func main() {
 		}
 		transactions = append(transactions, transaction)
 	}
-	fmt.Printf("Result: %.2f", transactions)
+	result := calculateBalance(transactions)
+	color.Blue("Result: %.2f", result)
 }
 
 func scanTransaction() float64 {
@@ -19,4 +24,12 @@ func scanTransaction() float64 {
 	fmt.Print("Enter transaction (N to exit): ")
 	fmt.Scan(&transaction)
 	return transaction
+}
+
+func calculateBalance(arr []float64) float64 {
+	var balance float64
+	for _, value := range arr {
+		balance = balance + value
+	}
+	return balance
 }
