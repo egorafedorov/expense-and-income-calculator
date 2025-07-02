@@ -7,6 +7,7 @@ import (
 )
 
 func main() {
+	fmt.Println("*** Expense and income calculator ***")
 	var transactions []float64
 	for {
 		transaction := scanTransaction()
